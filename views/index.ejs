@@ -5,9 +5,36 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Hello there!</h1>
-    <p>This website gives you the server's local time.</p>
-    <p>Created By: Kevin To</p>
-    <p><%= displayDateTime %></p>
+    <h1>Edit Page</h1>
+    <p>Feel free to input data:</p>
+    <form method="post">
+      <fieldset>
+        <legend>Are you a person?</legend>
+        <input type="checkbox" name="animal" value="checkbox" /> CheckBox
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>What is your favorite operating system?</legend>
+        <input type="radio" name="OS" value="mac" />Mac<br/>
+        <input type="radio" name="OS" value="pc" />Windows<br/>
+        <input type="radio" name="OS" value="linux" />Linux<br/>
+      </fieldset>
+      <fieldset>
+        <legend>Enter a sample email:</legend>
+        <input type="email" name="email">
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>Enter a number:</legend>
+        <input type="number" name="number">
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>Enter a date:</legend>
+        <input type="date" name="date">
+        <br/>
+      </fieldset>
+      <input type="submit" value="Submit now" />
+    </form>
   </body>
 </html>
