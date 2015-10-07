@@ -59,6 +59,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Set up Redis
+/*
 if (process.env.REDISTOGO_URL) {
   var rtg   = require("url").parse(process.env.REDISTOGO_URL);
   var redis = require("redis").createClient(rtg.port, rtg.hostname);
@@ -70,6 +71,6 @@ if (process.env.REDISTOGO_URL) {
 else {
   console.log("Running redis in development");
   var redis = require("redis").createClient();
-}
+} */
 
 module.exports = app;
