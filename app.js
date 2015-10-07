@@ -68,7 +68,8 @@ if (process.env.REDISTOGO_URL) {
   console.log("Successful init of redis");
 }
 else {
-    var redis = require("redis").createClient();
+  console.log("Running redis in development");
+  var redis = require("redis").createClient();
 }
 
 module.exports = app;
