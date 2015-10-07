@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var redis = require("redis").createClient();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -59,7 +58,6 @@ app.use(function(err, req, res, next) {
 });
 
 // Set up Redis
-/*
 if (process.env.REDISTOGO_URL) {
   var rtg   = require("url").parse(process.env.REDISTOGO_URL);
   var redis = require("redis").createClient(rtg.port, rtg.hostname);
@@ -71,6 +69,6 @@ if (process.env.REDISTOGO_URL) {
 else {
   console.log("Running redis in development");
   var redis = require("redis").createClient();
-} */
+}
 
 module.exports = app;
