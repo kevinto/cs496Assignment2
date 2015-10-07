@@ -10,4 +10,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: title, displayDateTime: dt });
 });
 
+/* POST home page. */
+router.post('/', function(req, res, next) {
+  var dt = timeHelper.getCurrentServerDateTime();
+  res.render('index', { title: "From POST", displayDateTime: dt });
+});
+
 module.exports = router;
