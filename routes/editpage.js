@@ -13,18 +13,28 @@ router.get('/', function(req, res, next) {
 
 // POST call for edit page
 router.post('/', function(req, res, next) {
-  console.log("action: " + req.body.action);
-  console.log("value for radio buttons: " + req.body.OS);
-  console.log("value for email: " + req.body.email);
-  console.log("value for number: " + req.body.number);
-  console.log("value for date: " + req.body.date);
-  
   var action = req.body.action;
   if (typeof(action) != "undefined" && action == "add_form_info") {
     var isPerson = typeof(req.body.isPerson) == "undefined" ? "" : req.body.isPerson;
-    console.log("isPerson: " + isPerson);
-    var result = redisHelper.insertIntoRedis("isPerson", isPerson);
-    console.log("result: " + result);
+    //var result = redisHelper.insertIntoRedis("isPerson", isPerson);
+    
+    // Add form values to the database
+    for (var k in req.body) {
+      if (req.body.hasOwnProperty(k)) {
+        //console.log("key: " + k + ", value: " + req.body[k]); // For Debugging
+        
+        // Skip the hidden field 
+        if (k == "action") {
+          continue; 
+        }
+        
+        // Add field to the database 
+        var result = redisHelper.insertIntoRedis(k, req.body[k]);
+        if (result == false) {
+          console.log("Error occurred on redis insert");
+        }
+      }
+    }
     
     res.render('editpage', { title: title, isPerson: isPerson });
   }
