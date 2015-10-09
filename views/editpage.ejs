@@ -14,19 +14,40 @@
         <% if (typeof(isPerson) == 'undefined' || isPerson == '') { %>
           <input type="checkbox" name="isPerson" value="checked"/> CheckBox
         <% } else { %>
+          <%= email %> 
+          <%= number %> 
+          <%= date %> 
           <input type="checkbox" name="isPerson" value=<%= isPerson %> checked="true"/> CheckBox
         <% } %>
         <br/>
       </fieldset>
       <fieldset>
         <legend>What is your favorite operating system?</legend>
-        <input type="radio" name="OS" value="mac" />Mac<br/>
-        <input type="radio" name="OS" value="pc" />Windows<br/>
-        <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% if (typeof(OS) == 'undefined' || OS == '') { %>
+          <input type="radio" name="OS" value="mac" />Mac<br/>
+          <input type="radio" name="OS" value="pc" />Windows<br/>
+          <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% } else if (OS == "mac") { %>
+          <input type="radio" name="OS" value="mac" checked/>Mac<br/>
+          <input type="radio" name="OS" value="pc" />Windows<br/>
+          <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% } else if (OS == "pc") { %>
+          <input type="radio" name="OS" value="mac" />Mac<br/>
+          <input type="radio" name="OS" value="pc" checked/>Windows<br/>
+          <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% } else if (OS == "linux") { %>
+          <input type="radio" name="OS" value="mac" />Mac<br/>
+          <input type="radio" name="OS" value="pc" />Windows<br/>
+          <input type="radio" name="OS" value="linux" checked/>Linux<br/>
+        <% } %>
       </fieldset>
       <fieldset>
         <legend>Enter a sample email:</legend>
-        <input type="email" name="email">
+        <% if (typeof(email) == 'undefined' || email == '') { %>
+          <input type="email" name="email">
+        <% } else { %>
+          <input type="email" name="email" value=<%= email %>>
+        <% } %>
         <br/>
       </fieldset>
       <fieldset>
