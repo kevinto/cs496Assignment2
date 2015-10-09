@@ -15,12 +15,12 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var action = req.body.action;
   if (typeof(action) != "undefined" && action == "add_form_info") {
+    
     var isPerson = typeof(req.body.isPerson) == "undefined" ? "" : req.body.isPerson;
     var OS = typeof(req.body.OS) == "undefined" ? "" : req.body.OS;
     var email = typeof(req.body.email) == "undefined" ? "" : req.body.email;
     var number = typeof(req.body.number) == "undefined" ? "" : req.body.number;
     var date = typeof(req.body.date) == "undefined" ? "" : req.body.date;
-    //var result = redisHelper.insertIntoRedis("isPerson", isPerson);
     
     // Add form values to the database
     for (var k in req.body) {
@@ -40,13 +40,19 @@ router.post('/', function(req, res, next) {
       }
     }
     
-    // TODO create a passthrough for the values - do need to get anything form teh database
+    // TODO create a passthrough for the values - do need to get anything form the database
     res.render('editpage', { title: title, isPerson: isPerson, OS: OS, email: email, number: number, date: date });
   }
   else {
     res.render('editpage', { title: title });
   }
   
+});
+
+// GET call for view page
+router.get('/view', function(req, res, next) {
+  //var dt = timeHelper.getCurrentServerDateTime();
+  res.render('viewpage', { title: title });
 });
 
 module.exports = router;

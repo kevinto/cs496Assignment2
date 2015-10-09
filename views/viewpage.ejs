@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>View Page</h1>
+    <form method="post">
+      <legend>Feel free to input data:</legend>
+      <input type="hidden" name="action" value="add_form_info">
+      <fieldset>
+        <legend>Are you a person?</legend>
+        <% if (typeof(isPerson) == 'undefined' || isPerson == '') { %>
+          <input type="checkbox" name="isPerson" value="checked"/> CheckBox
+        <% } else { %>
+          <%= email %> 
+          <%= number %> 
+          <%= date %> 
+          <input type="checkbox" name="isPerson" value=<%= isPerson %> checked="true"/> CheckBox
+        <% } %>
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>What is your favorite operating system?</legend>
+        <% if (typeof(OS) == 'undefined' || OS == '') { %>
+          <input type="radio" name="OS" value="mac" />Mac<br/>
+          <input type="radio" name="OS" value="pc" />Windows<br/>
+          <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% } else if (OS == "mac") { %>
+          <input type="radio" name="OS" value="mac" checked/>Mac<br/>
+          <input type="radio" name="OS" value="pc" />Windows<br/>
+          <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% } else if (OS == "pc") { %>
+          <input type="radio" name="OS" value="mac" />Mac<br/>
+          <input type="radio" name="OS" value="pc" checked/>Windows<br/>
+          <input type="radio" name="OS" value="linux" />Linux<br/>
+        <% } else if (OS == "linux") { %>
+          <input type="radio" name="OS" value="mac" />Mac<br/>
+          <input type="radio" name="OS" value="pc" />Windows<br/>
+          <input type="radio" name="OS" value="linux" checked/>Linux<br/>
+        <% } %>
+      </fieldset>
+      <fieldset>
+        <legend>Enter a sample email:</legend>
+        <% if (typeof(email) == 'undefined' || email == '') { %>
+          <input type="email" name="email">
+        <% } else { %>
+          <input type="email" name="email" value=<%= email %>>
+        <% } %>
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>Enter a number:</legend>
+        <input type="number" name="number">
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>Enter a date:</legend>
+        <input type="date" name="date">
+        <br/>
+      </fieldset>
+      <input type="submit" value="Submit now" />
+    </form>
+  </body>
+</html>
