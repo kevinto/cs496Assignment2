@@ -12,55 +12,60 @@
       <fieldset>
         <legend>Are you a person?</legend>
         <% if (typeof(isPerson) == 'undefined' || isPerson == '') { %>
-          <input type="checkbox" name="isPerson" value="checked"/> CheckBox
+          <input type="checkbox" name="isPerson" value="checked" disabled="disabled"/> CheckBox
         <% } else { %>
-          <%= email %> 
-          <%= number %> 
-          <%= date %> 
-          <input type="checkbox" name="isPerson" value=<%= isPerson %> checked="true"/> CheckBox
+          <input type="checkbox" name="isPerson" value=<%= isPerson %> checked="true"  disabled="disabled"/> CheckBox
         <% } %>
         <br/>
       </fieldset>
       <fieldset>
         <legend>What is your favorite operating system?</legend>
         <% if (typeof(OS) == 'undefined' || OS == '') { %>
-          <input type="radio" name="OS" value="mac" />Mac<br/>
-          <input type="radio" name="OS" value="pc" />Windows<br/>
-          <input type="radio" name="OS" value="linux" />Linux<br/>
+          <input type="radio" name="OS" value="mac" disabled="disabled"/>Mac<br/>
+          <input type="radio" name="OS" value="pc" disabled="disabled"/>Windows<br/>
+          <input type="radio" name="OS" value="linux" disabled="disabled"/>Linux<br/>
         <% } else if (OS == "mac") { %>
-          <input type="radio" name="OS" value="mac" checked/>Mac<br/>
-          <input type="radio" name="OS" value="pc" />Windows<br/>
-          <input type="radio" name="OS" value="linux" />Linux<br/>
+          <input type="radio" name="OS" value="mac" disabled="disabled" checked/>Mac<br/>
+          <input type="radio" name="OS" value="pc" disabled="disabled"/>Windows<br/>
+          <input type="radio" name="OS" value="linux" disabled="disabled"/>Linux<br/>
         <% } else if (OS == "pc") { %>
-          <input type="radio" name="OS" value="mac" />Mac<br/>
-          <input type="radio" name="OS" value="pc" checked/>Windows<br/>
-          <input type="radio" name="OS" value="linux" />Linux<br/>
+          <input type="radio" name="OS" value="mac" disabled="disabled"/>Mac<br/>
+          <input type="radio" name="OS" value="pc" disabled="disabled" checked/>Windows<br/>
+          <input type="radio" name="OS" value="linux" disabled="disabled"/>Linux<br/>
         <% } else if (OS == "linux") { %>
-          <input type="radio" name="OS" value="mac" />Mac<br/>
-          <input type="radio" name="OS" value="pc" />Windows<br/>
-          <input type="radio" name="OS" value="linux" checked/>Linux<br/>
+          <input type="radio" name="OS" value="mac" disabled="disabled"/>Mac<br/>
+          <input type="radio" name="OS" value="pc"  disabled="disabled"/>Windows<br/>
+          <input type="radio" name="OS" value="linux" disabled="disabled" checked/>Linux<br/>
         <% } %>
       </fieldset>
       <fieldset>
         <legend>Enter a sample email:</legend>
         <% if (typeof(email) == 'undefined' || email == '') { %>
-          <input type="email" name="email">
+          <input type="email" name="email" disabled="disabled">
         <% } else { %>
-          <input type="email" name="email" value=<%= email %>>
+          <input type="email" name="email" value=<%= email %> disabled="disabled">
         <% } %>
         <br/>
       </fieldset>
       <fieldset>
         <legend>Enter a number:</legend>
-        <input type="number" name="number">
+        <% if (typeof(number) == 'undefined' || number == '') { %>
+          <input type="number" name="number" disabled="disabled">
+        <% } else { %>
+          <input type="number" name="number" value=<%= number %> disabled="disabled">
+        <% } %>
         <br/>
       </fieldset>
       <fieldset>
         <legend>Enter a date:</legend>
-        <input type="date" name="date">
+        <% if (typeof(date) == 'undefined' || date == '') { %>
+          <input type="date" name="date" disabled="disabled">
+        <% } else { %>
+          <input type="date" name="date" value=<%= date %> disabled="disabled">
+        <% } %>
         <br/>
       </fieldset>
-      <input type="submit" value="Submit now" />
+      <input type="submit" value="Submit now" disabled="disabled"/>
     </form>
   </body>
 </html>

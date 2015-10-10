@@ -17,30 +17,34 @@ module.exports = {
       var email = typeof(req.body.email) == "undefined" ? "" : req.body.email;
       var number = typeof(req.body.number) == "undefined" ? "" : req.body.number;
       var date = typeof(req.body.date) == "undefined" ? "" : req.body.date;
-    
-      // Add form values to the database
-      for (var k in req.body) {
-        if (req.body.hasOwnProperty(k)) {
-          //console.log("key: " + k + ", value: " + req.body[k]); // For Debugging
-          
-          // Skip the hidden field 
-          if (k == "action") {
-            continue; 
-          }
-          
-          // Add field to the database 
-          var result = redisHelper.insertIntoRedis(k, req.body[k]);
-          if (result == false) {
-            console.log("Error occurred on redis insert");
-          }
-        }
+      
+      var keys = [];
+      var values = [];
+      
+      keys.push("isPerson"); 
+      keys.push("OS"); 
+      keys.push("email"); 
+      keys.push("number"); 
+      keys.push("date");
+      
+      values.push(isPerson);
+      values.push(OS);
+      values.push(email);
+      values.push(number);
+      values.push(date);
+      
+      // Add fields to the database 
+      var result = redisHelper.msetIntoRedis(keys, values, res, ShowEdit);
+      if (result == false) {
+        console.log("Error occurred on redis insert");
       }
-    
-      // TODO create a passthrough for the values - do need to get anything form the database
-      res.render('editpage', { title: title, isPerson: isPerson, OS: OS, email: email, number: number, date: date });
     }
     else {
-    res.render('editpage', { title: title });
+      res.render('editpage', { title: title });
     }
   }
 };
+
+function ShowEdit(res, params) {
+  res.render('editpage', { title: title, isPerson: params[0], OS: params[1], email: params[2], number: params[3], date: params[4] });
+}
