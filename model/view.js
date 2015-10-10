@@ -6,11 +6,6 @@ var title = "CS496 A2 View Page";
 
 module.exports = {
   GetView: function(req, res, next) {
-    var isPerson = redisHelper.getFromRedis("isPerson");
-    var OS = redisHelper.getFromRedis("OS");
-    var email = redisHelper.getFromRedis("email");
-    var number = redisHelper.getFromRedis("number");
-    var date = redisHelper.getFromRedis("date");
     var keys = ["isPerson", "OS", "email", "number", "date"];
     redisHelper.mgetFromRedis(keys, res, ShowView);
   }

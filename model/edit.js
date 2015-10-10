@@ -34,7 +34,7 @@ module.exports = {
       values.push(date);
       
       // Add fields to the database 
-      var result = redisHelper.msetIntoRedis(keys, values, res, ShowEdit);
+      var result = redisHelper.msetIntoRedis(keys, values, res, ShowEditFromPost);
       if (result == false) {
         console.log("Error occurred on redis insert");
       }
@@ -45,6 +45,6 @@ module.exports = {
   }
 };
 
-function ShowEdit(res, params) {
+function ShowEditFromPost(res, params) {
   res.render('editpage', { title: title, isPerson: params[0], OS: params[1], email: params[2], number: params[3], date: params[4] });
 }
