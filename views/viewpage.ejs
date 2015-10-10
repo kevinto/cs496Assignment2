@@ -22,21 +22,21 @@
       <fieldset>
         <legend>What is your favorite operating system?</legend>
         <% if (typeof(OS) == 'undefined' || OS == '') { %>
-          <input type="radio" name="OS" value="mac" disabled="disabled"/>Mac<br/>
-          <input type="radio" name="OS" value="pc" disabled="disabled"/>Windows<br/>
-          <input type="radio" name="OS" value="linux" disabled="disabled"/>Linux<br/>
+          <input type="radio" name="OS" disabled="disabled" value="mac" />Mac<br/>
+          <input type="radio" name="OS" disabled="disabled" value="pc" />Windows<br/>
+          <input type="radio" name="OS" disabled="disabled" value="linux" />Linux<br/>
         <% } else if (OS == "mac") { %>
-          <input type="radio" name="OS" value="mac" disabled="disabled" checked/>Mac<br/>
-          <input type="radio" name="OS" value="pc" disabled="disabled"/>Windows<br/>
-          <input type="radio" name="OS" value="linux" disabled="disabled"/>Linux<br/>
+          <input type="radio" name="OS" disabled="disabled" value="mac"  checked/>Mac<br/>
+          <input type="radio" name="OS" disabled="disabled" value="pc" />Windows<br/>
+          <input type="radio" name="OS" disabled="disabled" value="linux" />Linux<br/>
         <% } else if (OS == "pc") { %>
-          <input type="radio" name="OS" value="mac" disabled="disabled"/>Mac<br/>
-          <input type="radio" name="OS" value="pc" disabled="disabled" checked/>Windows<br/>
-          <input type="radio" name="OS" value="linux" disabled="disabled"/>Linux<br/>
+          <input type="radio" name="OS" disabled="disabled" value="mac" />Mac<br/>
+          <input type="radio" name="OS" disabled="disabled" value="pc"  checked/>Windows<br/>
+          <input type="radio" name="OS" disabled="disabled" value="linux" />Linux<br/>
         <% } else if (OS == "linux") { %>
-          <input type="radio" name="OS" value="mac" disabled="disabled"/>Mac<br/>
-          <input type="radio" name="OS" value="pc"  disabled="disabled"/>Windows<br/>
-          <input type="radio" name="OS" value="linux" disabled="disabled" checked/>Linux<br/>
+          <input type="radio" name="OS" disabled="disabled" value="mac" />Mac<br/>
+          <input type="radio" name="OS" disabled="disabled" value="pc"  />Windows<br/>
+          <input type="radio" name="OS" disabled="disabled" value="linux"  checked/>Linux<br/>
         <% } %>
       </fieldset>
       <fieldset>
@@ -53,7 +53,7 @@
         <% if (typeof(number) == 'undefined' || number == '') { %>
           <input type="number" name="number" disabled="disabled">
         <% } else { %>
-          <input type="number" name="number" value=<%= number %> disabled="disabled">
+          <input type="number" name="number" disabled="disabled" value=<%= number %>>
         <% } %>
         <br/>
       </fieldset>
