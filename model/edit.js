@@ -6,7 +6,8 @@ var title = "CS496 A2 Edit Page";
 
 module.exports = {
   GetEditPage: function(req, res, next) {
-    res.render('editpage', { title: title });
+    var keys = ["isPerson", "OS", "email", "number", "date"];
+    redisHelper.mgetFromRedis(keys, res, ShowEdit);
   },
   
   PostEditPage: function(req, res, next) {
@@ -34,7 +35,7 @@ module.exports = {
       values.push(date);
       
       // Add fields to the database 
-      var result = redisHelper.msetIntoRedis(keys, values, res, ShowEditFromPost);
+      var result = redisHelper.msetIntoRedis(keys, values, res, ShowEdit);
       if (result == false) {
         console.log("Error occurred on redis insert");
       }
@@ -45,6 +46,6 @@ module.exports = {
   }
 };
 
-function ShowEditFromPost(res, params) {
+function ShowEdit(res, params) {
   res.render('editpage', { title: title, isPerson: params[0], OS: params[1], email: params[2], number: params[3], date: params[4] });
 }
